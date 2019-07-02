@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{count}}</h1>
+    <button @click="addCount">add</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  name: "home",
+  components: {},
+  computed: {
+    count() {
+      return this.$store.state.count;
+    }
+  },
+  methods: {
+    addCount() {
+      this.$store.commit("addCount");
+    }
   }
-}
+};
 </script>
