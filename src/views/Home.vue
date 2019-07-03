@@ -10,12 +10,22 @@ import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "home",
-  // es5
-  // computed: mapState(["count"]),
-  // methods: mapMutations(["addCount"])
-  //es6
+  data() {
+    return {
+      localCount: 0
+    };
+  },
   computed: {
-    ...mapState(["count"])
+    mycount() {
+      return this.localCount;
+    },
+    ...mapState({
+      // sroteCount:'count',
+      storeCount: state => state.count,
+      totalCount(state) {
+        return this.localCount + state.count;
+      }
+    })
   },
   methods: {
     ...mapMutations(["addCount"])
