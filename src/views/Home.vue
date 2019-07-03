@@ -6,20 +6,19 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "home",
-  components: {},
+  // es5
+  // computed: mapState(["count"]),
+  // methods: mapMutations(["addCount"])
+  //es6
   computed: {
-    count() {
-      return this.$store.state.count;
-    }
+    ...mapState(["count"])
   },
   methods: {
-    addCount() {
-      this.$store.commit("addCount");
-    }
+    ...mapMutations(["addCount"])
   }
 };
 </script>
