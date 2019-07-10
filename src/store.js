@@ -9,10 +9,11 @@ export default new Vuex.Store({
     username: "",
     list: []
   },
+  //mutation一定是同步操作
   mutations: {
-    addCount(state) {
-      console.log(state)
-      state.count += 1;
+    addCount(state, payload) {
+      console.log(payload, state.count)
+      state.count = state.count + payload;
     }
   },
   actions: {
